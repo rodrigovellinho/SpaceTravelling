@@ -1,7 +1,6 @@
+/* eslint-disable prettier/prettier */
 import { GetStaticPaths, GetStaticProps } from 'next';
-
 import { getPrismicClient } from '../../services/prismic';
-
 import commonStyles from '../../styles/common.module.scss';
 import styles from './post.module.scss';
 
@@ -26,9 +25,9 @@ interface PostProps {
   post: Post;
 }
 
-// export default function Post() {
-//   // TODO
-// }
+export default function Post(): JSX.Element {
+  return <div>alo</div>;
+}
 
 // export const getStaticPaths = async () => {
 //   const prismic = getPrismicClient();

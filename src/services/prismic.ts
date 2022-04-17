@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import Prismic from '@prismicio/client';
 import { DefaultClient } from '@prismicio/client/types/client';
 

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { AppProps } from 'next/app';
 import '../styles/globals.scss';
 
