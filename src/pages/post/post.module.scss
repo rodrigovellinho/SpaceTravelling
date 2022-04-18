@@ -1,59 +1,111 @@
 .container {
-  width: 700px;
-  height: 108px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 30px;
+  width: 1440px;
+  height: 2773px;
+  background: #1a1d23;
+  margin: 0 auto;
 
-  .title {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 28px;
-    line-height: 34px;
-    text-align: justify;
-    letter-spacing: -0.5px;
-    color: #f8f8f8;
+  .header {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 800px;
+    margin: 0 auto;
+  }
+  .banner {
+    img {
+      width: 100%;
+      height: 25rem;
+    }
   }
 
-  .subtitle {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 22px;
-    text-align: justify;
-    color: #d7d7d7;
-  }
+  .main {
+    margin: 0 auto;
+    width: 721px;
+    height: 2108px;
+    margin-top: 40px;
+    > span {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 58px;
+      letter-spacing: -0.5px;
+      color: #f8f8f8;
+    }
 
-  .info {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 263px;
-    height: 20px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-    color: #bbbbbb;
-
-    .createdat {
+    .info {
       display: flex;
       flex-direction: row;
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      color: #bbbbbb;
+      width: 700px;
+      margin-top: 25px;
 
-      > div {
-        margin-right: 5px;
+      .createdAt {
+        display: flex;
+        flex-direction: row;
+        margin-right: 20px;
+        > div {
+          margin-right: 10px;
+        }
+      }
+
+      .author {
+        display: flex;
+        flex-direction: row;
+        margin-right: 20px;
+
+        > div {
+          margin-right: 10px;
+        }
+      }
+
+      .etr {
+        display: flex;
+        flex-direction: row;
+
+        > div {
+          margin-right: 10px;
+        }
       }
     }
 
-    .author {
-      display: flex;
-      flex-direction: row;
-      > div {
-        margin-right: 5px;
+    .content {
+      width: 700px;
+      height: 1942px;
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 36px;
+      line-height: 140%;
+      text-align: justify;
+      color: #f8f8f8;
+      margin-top: 30px;
+
+      h2 {
+        font-size: 2.25rem;
+        margin: 3rem 0;
+      }
+
+      p,
+      span,
+      a,
+      ul {
+        font-size: 1.125rem;
+        line-height: 1.8;
+      }
+
+      strong {
+        font-weight: 700;
+      }
+
+      ul {
+        li {
+          margin: 0.5rem 0;
+        }
       }
     }
   }

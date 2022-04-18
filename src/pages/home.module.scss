@@ -9,8 +9,8 @@
     margin: 0 auto;
 
     .header {
-      padding-top: 50px;
-      margin-bottom: 50px;
+      padding-top: 30px;
+      padding-bottom: 30px;
     }
 
     .loadPostsContainer {
@@ -39,6 +39,7 @@
   flex-direction: column;
   gap: 10px;
   margin-top: 30px;
+  cursor: pointer;
 
   .title {
     font-family: 'Inter';
