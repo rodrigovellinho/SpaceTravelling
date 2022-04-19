@@ -34,8 +34,8 @@ interface HomeProps {
   results: Post[];
 }
 
-export default function Home({ postsPagination }: HomeProps): JSX.Element {
-  const formattedPost = postsPagination?.results.map(post => {
+export default function Home(postsPagination: HomeProps): JSX.Element {
+  const formattedPost = postsPagination.results.map(post => {
     return {
       ...post,
       first_publication_date: format(
