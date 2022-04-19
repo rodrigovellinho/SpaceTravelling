@@ -5,7 +5,7 @@ Bootcamp Ignite Rocketseat - Desafio 06 - Criando uma aplicação do zero
 ## :rocket: Sobre o desafio
 
 <p align="center">
-  <img src="" alt="spacetravelling">
+  <img src="https://github.com/rodrigovellinho/SpaceTravelling/blob/master/public/images/Capa.jpg" alt="spacetravelling">
 </p>
 
 A aplicação é um blog desenvolvido em NextJS e utilza o Prismic CMS como gerenciador de blogs.
