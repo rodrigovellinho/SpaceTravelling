@@ -7,7 +7,6 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { format } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
-import { IconContext } from 'react-icons';
 import { FiCalendar, FiUser, FiClock } from 'react-icons/fi';
 import Prismic from '@prismicio/client';
 import { RichText } from 'prismic-dom';
@@ -38,6 +37,12 @@ interface PostProps {
 }
 
 export default function Post({ post }: PostProps): JSX.Element {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    <h1>Carregando...</h1>;
+  }
+
   const totalWords = post.data.content.reduce((total, contentItem) => {
     total += contentItem.heading.split(' ').length;
 
@@ -47,14 +52,6 @@ export default function Post({ post }: PostProps): JSX.Element {
   }, 0);
 
   const readTime = Math.ceil(totalWords / 200);
-
-  console.log(totalWords);
-
-  const router = useRouter();
-
-  if (router.isFallback) {
-    <h1>Carregando...</h1>;
-  }
 
   const formattedDate = format(
     new Date(post.first_publication_date),
@@ -67,60 +64,42 @@ export default function Post({ post }: PostProps): JSX.Element {
   return (
     <>
       <Head>
-        <title>{post.data.title} | spacetravelling</title>
+        <title>SpaceTraveling | {post.data.title}</title>
       </Head>
-
-      <div className={styles.container}>
-        <div className={styles.header}>
-          <Header />
-        </div>
-
-        <div className={styles.banner}>
-          <img src={post.data.banner.url} alt="banner" />
-        </div>
-        <div className={styles.main}>
-          <span>{post.data.title}</span>
-          <div className={styles.info}>
-            <div className={styles.createdAt}>
-              <IconContext.Provider value={{ color: '#bbbbbb' }}>
-                <div>
-                  <FiCalendar />
-                </div>
-              </IconContext.Provider>
-              <span>{formattedDate}</span>
-            </div>
-            <div className={styles.author}>
-              <IconContext.Provider value={{ color: '#bbbbbb' }}>
-                <div>
-                  <FiUser />
-                </div>
-              </IconContext.Provider>
-              <span>{post.data.author}</span>
-            </div>
-            <div className={styles.etr}>
-              <IconContext.Provider value={{ color: '#bbbbbb' }}>
-                <div>
-                  <FiClock />
-                </div>
-              </IconContext.Provider>
-              <span>{`${readTime} min`}</span>
-            </div>
+      <Header />
+      <img src={post.data.banner.url} alt="imagem" className={styles.banner} />
+      <div className={commonStyles.container}>
+        <div className={styles.post}>
+          <div className={styles.postTop}>
+            <h1>{post.data.title}</h1>
+            <ul>
+              <li>
+                <FiCalendar />
+                {formattedDate}
+              </li>
+              <li>
+                <FiUser />
+                {post.data.author}
+              </li>
+              <li>
+                <FiClock />
+                {`${readTime} min`}
+              </li>
+            </ul>
           </div>
-          <div className={styles.content}>
-            {post.data.content.map(content => {
-              return (
-                <article key={content.heading}>
-                  <h2>{content.heading}</h2>
-                  <div
-                    className={styles.postContent}
-                    dangerouslySetInnerHTML={{
-                      __html: RichText.asHtml(content.body),
-                    }}
-                  />
-                </article>
-              );
-            })}
-          </div>
+          {post.data.content.map(content => {
+            return (
+              <article key={content.heading}>
+                <h2>{content.heading}</h2>
+                <div
+                  className={styles.postContent}
+                  dangerouslySetInnerHTML={{
+                    __html: RichText.asHtml(content.body),
+                  }}
+                />
+              </article>
+            );
+          })}
         </div>
       </div>
     </>
@@ -133,12 +112,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
     Prismic.predicates.at('document.type', 'post'),
   ]);
 
-  const posts_paths = posts.results.map(post => ({
+  const paths = posts.results.map(post => ({
     params: { slug: post.uid },
   }));
 
   return {
-    paths: posts_paths,
+    paths,
     fallback: true,
   };
 };

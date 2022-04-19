@@ -1,112 +1,76 @@
-.container {
-  width: 1440px;
-  height: 2773px;
-  background: #1a1d23;
-  margin: 0 auto;
+.banner {
+  width: 100%;
+  height: 25rem;
+  object-fit: cover;
+}
 
-  .header {
-    padding-top: 30px;
-    padding-bottom: 30px;
-    width: 800px;
-    margin: 0 auto;
-  }
-  .banner {
-    img {
-      width: 100%;
-      height: 25rem;
-    }
+.post {
+  h2 {
+    font-size: 2.25rem;
+    color: var(--heading);
+    margin: 3rem 0;
   }
 
-  .main {
-    margin: 0 auto;
-    width: 721px;
-    height: 2108px;
-    margin-top: 40px;
-    > span {
-      font-family: 'Inter';
-      font-style: normal;
-      font-weight: 700;
-      font-size: 48px;
-      line-height: 58px;
-      letter-spacing: -0.5px;
-      color: #f8f8f8;
+  p,
+  span,
+  a,
+  ul {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    margin: 1.8rem 0;
+  }
+
+  a {
+    color: var(--highlight);
+  }
+
+  strong {
+    font-weight: 700;
+    color: var(--body);
+  }
+
+  ul {
+    padding-left: 1.5rem;
+
+    li {
+      margin: 0.5rem 0;
     }
+  }
+}
 
-    .info {
-      display: flex;
-      flex-direction: row;
-      font-family: 'Inter';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 19px;
-      color: #bbbbbb;
-      width: 700px;
-      margin-top: 25px;
+.postTop {
+  margin-bottom: 4rem;
+  > h1 {
+    font-size: 3rem;
+    color: var(--heading);
+    margin-bottom: 1.5rem;
+  }
 
-      .createdAt {
-        display: flex;
-        flex-direction: row;
-        margin-right: 20px;
-        > div {
-          margin-right: 10px;
-        }
+  > ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+
+    & li {
+      margin: 0;
+      font-size: 0.875rem;
+
+      & svg {
+        margin-right: 0.5rem;
       }
 
-      .author {
-        display: flex;
-        flex-direction: row;
-        margin-right: 20px;
-
-        > div {
-          margin-right: 10px;
-        }
-      }
-
-      .etr {
-        display: flex;
-        flex-direction: row;
-
-        > div {
-          margin-right: 10px;
-        }
+      & + li {
+        margin-left: 1.625rem;
       }
     }
+  }
 
-    .content {
-      width: 700px;
-      height: 1942px;
-      font-family: 'Inter';
-      font-style: normal;
-      font-weight: 500;
-      font-size: 36px;
-      line-height: 140%;
-      text-align: justify;
-      color: #f8f8f8;
-      margin-top: 30px;
-
-      h2 {
-        font-size: 2.25rem;
-        margin: 3rem 0;
-      }
-
-      p,
-      span,
-      a,
-      ul {
-        font-size: 1.125rem;
-        line-height: 1.8;
-      }
-
-      strong {
-        font-weight: 700;
-      }
-
-      ul {
-        li {
-          margin: 0.5rem 0;
-        }
-      }
-    }
+  > span {
+    margin-top: 1rem;
+    display: block;
+    font-style: italic;
+    font-size: 0.875rem;
+    color: var(--info);
   }
 }

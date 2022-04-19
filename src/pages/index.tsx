@@ -5,7 +5,6 @@ import { format } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 import Link from 'next/link';
 import Head from 'next/head';
-import { IconContext } from 'react-icons';
 import { FiCalendar, FiUser } from 'react-icons/fi';
 import Prismic from '@prismicio/client';
 import { getPrismicClient } from '../services/prismic';
@@ -31,10 +30,12 @@ interface PostPagination {
 
 interface HomeProps {
   postsPagination: PostPagination;
+  next_page: string;
+  results: Post[];
 }
 
-export default function Home(postsPagination: HomeProps): JSX.Element {
-  const formattedPost = postsPagination.results.map(post => {
+export default function Home({ postsPagination }: HomeProps): JSX.Element {
+  const formattedPost = postsPagination?.results.map(post => {
     return {
       ...post,
       first_publication_date: format(
@@ -89,51 +90,36 @@ export default function Home(postsPagination: HomeProps): JSX.Element {
       <Head>
         <title>Home | spacetravelling </title>
       </Head>
-      <div className={styles.container}>
-        <div className={styles.subContainer}>
-          <div className={styles.header}>
-            <Header />
-          </div>
+      <div className={commonStyles.container}>
+        <Header />
 
-          <div className={styles.posts}>
-            {posts.map(post => (
-              <Link href={`/post/${post.uid}`} key={post.uid}>
-                <div className={styles.containerPost}>
-                  <span className={styles.title}>{post.data.title}</span>
-                  <span className={styles.subtitle}>{post.data.subtitle}</span>
-                  <div className={styles.info}>
-                    <div className={styles.createdat}>
-                      <IconContext.Provider value={{ color: '#bbbbbb' }}>
-                        <div>
-                          <FiCalendar />
-                        </div>
-                      </IconContext.Provider>
-                      <span> {post.first_publication_date}</span>
-                    </div>
-                    <div className={styles.author}>
-                      <IconContext.Provider value={{ color: '#bbbbbb' }}>
-                        <div>
-                          <FiUser />
-                        </div>
-                      </IconContext.Provider>
-                      <span>{post.data.author}</span>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-
+        <div className={styles.posts}>
+          {posts?.map(post => (
+            <Link href={`/post/${post.uid}`} key={post.uid}>
+              <a className={styles.post}>
+                <strong>{post.data.title}</strong>
+                <p>{post.data.subtitle}</p>
+                <ul>
+                  <li>
+                    <FiCalendar />
+                    {post.first_publication_date}
+                  </li>
+                  <li>
+                    <FiUser />
+                    {post.data.author}
+                  </li>
+                </ul>
+              </a>
+            </Link>
+          ))}
           {nextPage && (
-            <div className={styles.loadPostsContainer}>
-              <button
-                type="button"
-                className={styles.loadPosts}
-                onClick={handleNextPage}
-              >
-                Carregar mais posts
-              </button>
-            </div>
+            <button
+              type="button"
+              className={styles.loadPosts}
+              onClick={handleNextPage}
+            >
+              Carregar mais posts
+            </button>
           )}
         </div>
       </div>
